@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import { store } from './store';
 import Routes from './routes';
 import './index.css';
 
@@ -13,11 +11,9 @@ const apolloClient = new ApolloClient({
 });
 
 const App = () => (
-  <Provider store={store}>
-    <ApolloProvider client={apolloClient}>
-      <Routes />
-    </ApolloProvider>
-  </Provider>
+  <ApolloProvider client={apolloClient}>
+    <Routes />
+  </ApolloProvider>
 );
 
 ReactDOM.render(<App />, document.getElementById('root'));
